@@ -72,6 +72,7 @@ class Patient extends MX_Controller {
         $address = $this->input->post('address');
         $phone = $this->input->post('phone');
         $sex = $this->input->post('sex');
+        $no_cedula = $this->input->post('no_cedula');
         $birthdate = $this->input->post('birthdate');
         $bloodgroup = $this->input->post('bloodgroup');
         $patient_id = $this->input->post('p_id');
@@ -108,11 +109,13 @@ class Patient extends MX_Controller {
         // Validating Doctor Field
         //   $this->form_validation->set_rules('doctor', 'Doctor', 'trim|min_length[1]|max_length[100]|xss_clean');
         // Validating Address Field   
-        $this->form_validation->set_rules('address', 'Address', 'trim|required|min_length[2]|max_length[500]|xss_clean');
+        $this->form_validation->set_rules('address', 'Address', 'trim|min_length[2]|max_length[500]|xss_clean');
         // Validating Phone Field           
-        $this->form_validation->set_rules('phone', 'Phone', 'trim|required|min_length[2]|max_length[50]|xss_clean');
+        $this->form_validation->set_rules('phone', 'Phone', 'trim|min_length[2]|max_length[50]|xss_clean');
         // Validating Email Field
-        $this->form_validation->set_rules('sex', 'Sex', 'trim|min_length[2]|max_length[100]|xss_clean');
+        $this->form_validation->set_rules('sex', 'Sex', 'trim|required|min_length[2]|max_length[100]|xss_clean');
+         // Validating Cedula Field
+         $this->form_validation->set_rules('no_cedula', 'NoCedula', 'trim|required|min_length[10]|max_length[10]|xss_clean');
         // Validating Address Field   
         $this->form_validation->set_rules('birthdate', 'Birth Date', 'trim|min_length[2]|max_length[500]|xss_clean');
         // Validating Phone Field           
@@ -174,7 +177,8 @@ class Patient extends MX_Controller {
                     'birthdate' => $birthdate,
                     'bloodgroup' => $bloodgroup,
                     'add_date' => $add_date,
-                    'registration_time' => $registration_time
+                    'registration_time' => $registration_time,
+                    'no_cedula' => $no_cedula
                 );
             } else {
                 //$error = array('error' => $this->upload->display_errors());
@@ -190,7 +194,8 @@ class Patient extends MX_Controller {
                     'birthdate' => $birthdate,
                     'bloodgroup' => $bloodgroup,
                     'add_date' => $add_date,
-                    'registration_time' => $registration_time
+                    'registration_time' => $registration_time,
+                    'no_cedula' => $no_cedula,
                 );
             }
 
@@ -1071,9 +1076,10 @@ class Patient extends MX_Controller {
             if ($this->ion_auth->in_group(array('admin'))) {
                 $info[] = array(
                     $patient->id,
+                    $patient->no_cedula,
                     $patient->name,
-                    $patient->phone,
-                    $this->settings_model->getSettings()->currency . $this->patient_model->getDueBalanceByPatientId($patient->id),
+                    $patient->sex,
+                    // $this->settings_model->getSettings()->currency . $this->patient_model->getDueBalanceByPatientId($patient->id),
                     $options1 . ' ' . $options6 . ' ' . $options3 . ' ' . $options4 . ' ' . $options5,
                         //  $options2
                 );
@@ -1082,9 +1088,10 @@ class Patient extends MX_Controller {
             if ($this->ion_auth->in_group(array('Accountant', 'Receptionist'))) {
                 $info[] = array(
                     $patient->id,
+                    $patient->no_cedula,
                     $patient->name,
-                    $patient->phone,
-                    $this->settings_model->getSettings()->currency . $this->patient_model->getDueBalanceByPatientId($patient->id),
+                    $patient->sex,
+                    // $this->settings_model->getSettings()->currency . $this->patient_model->getDueBalanceByPatientId($patient->id),
                     $options1 . ' ' . $options6 . ' ' . $options4,
                         //  $options2
                 );
@@ -1093,8 +1100,9 @@ class Patient extends MX_Controller {
             if ($this->ion_auth->in_group(array('Laboratorist', 'Nurse', 'Doctor'))) {
                 $info[] = array(
                     $patient->id,
+                    $patient->no_cedula,
                     $patient->name,
-                    $patient->phone,
+                    $patient->sex,
                     $options1 . ' ' . $options6 . ' ' . $options3,
                         //  $options2
                 );
@@ -1162,8 +1170,9 @@ class Patient extends MX_Controller {
 
             $info[] = array(
                 $patient->id,
+                $patient->no_cedula,
                 $patient->name,
-                $patient->phone,
+                $patient->sex,
                 $due,
                 //  $options1 . ' ' . $options2 . ' ' . $options3 . ' ' . $options4 . ' ' . $options5,
                 $options4

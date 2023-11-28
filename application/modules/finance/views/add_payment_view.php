@@ -3,6 +3,7 @@
 <section id="main-content">
     <section class="wrapper site-min-height">
         <!-- page start-->
+
         <section class="">
             <header class="panel-heading">
                 <?php
@@ -10,6 +11,7 @@
                     echo lang('edit_payment');
                 else
                     echo lang('add_new_payment');
+                    
                 ?>
             </header>
             <div class="">
@@ -101,7 +103,15 @@
 
                                             </div>
                                             -->
+                                            <div class="col-md-9"> 
+                                                <label for="exampleInputEmail1">#FACTURA</label>
+                                                <input type="text" class="form-control pay_in" name="factura" id="factura" value='<?php
+                                                if (!empty($paymentUser->factura)) {
 
+                                                    echo $paymentUser->factura;  
+                                                }
+                                                ?>' placeholder=" " >
+                                            </div>
                                             <div class="col-md-12 payment pad_bot">
                                                 <label for="exampleInputEmail1"><?php echo lang('patient'); ?></label>
                                                 <select class="form-control m-bot15 js-example-basic-single pos_select" id="pos_select" name="patient" value=''> 
@@ -233,6 +243,7 @@
                                                     <label for="exampleInputEmail1"> <?php echo lang('select'); ?></label>
                                                     <select name="category_name[]" id="" class="multi-select" multiple="" id="my_multi_select3" >
                                                         <?php foreach ($categories as $category) { ?>
+                                                            console.log(categories);
                                                             <option class="ooppttiioonn" data-id="<?php echo $category->c_price; ?>" data-idd="<?php echo $category->id; ?>" data-cat_name="<?php echo $category->category; ?>" value="<?php echo $category->category; ?>" 
 
                                                                     <?php

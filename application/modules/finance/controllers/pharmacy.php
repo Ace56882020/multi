@@ -72,9 +72,11 @@ class Pharmacy extends MX_Controller {
 
     public function addPaymentView() {
         $data = array();
+        $id = $this->input->get('id');
         $data['discount_type'] = $this->pharmacy_model->getDiscountType();
         $data['settings'] = $this->settings_model->getSettings();
         $data['medicines'] = $this->medicine_model->getMedicine();
+        $data['paymentUser'] = $this->pharmacy_model->getPaymentUser($id);
         $this->load->view('home/dashboard', $data); // just the header file
         $this->load->view('pharmacy/add_payment_view', $data);
         $this->load->view('home/footer'); // just the header file
@@ -134,6 +136,7 @@ class Pharmacy extends MX_Controller {
 
     public function addPayment() {
         $id = $this->input->post('id');
+        $idPayment = $this->input->post('idPayment');
         $item_selected = array();
         $quantity = array();
         $item_selected = $this->input->post('medicine_id');
@@ -192,17 +195,37 @@ class Pharmacy extends MX_Controller {
             }
 
             $data = array();
-            if (empty($id)) {
+            if (empty($idPayment)) {
+                // $data = array(
+                //     'category_name' => $category_name,
+                //     'patient' => $patient,
+                //     'date' => $date,
+                //     'amount' => $sub_total,
+                //     'discount' => $discount,
+                //     'flat_discount' => $flat_discount,
+                //     'gross_total' => $gross_total,
+                //     'amount_received' => $amount_received,
+                //     'status' => 'unpaid',
+                // );
+                // $this->pharmacy_model->insertPayment($data);
+                // $inserted_id = $this->db->insert_id();
+                // foreach ($item_quantity_array as $key => $value) {
+                //     $previous_qty = $this->db->get_where('medicine', array('id' => $key))->row()->quantity;
+                //     $new_qty = $previous_qty - $value;
+                //     $this->db->where('id', $key);
+                //     $this->db->update('medicine', array('quantity' => $new_qty));
+                // }
+                // $this->session->set_flashdata('feedback', 'Added');
+                // redirect("finance/pharmacy/invoice?id=" . "$inserted_id");
+            } else {
                 $data = array(
-                    'category_name' => $category_name,
+                    'category' => $category_name,
                     'patient' => $patient,
-                    'date' => $date,
-                    'amount' => $sub_total,
-                    'discount' => $discount,
-                    'flat_discount' => $flat_discount,
-                    'gross_total' => $gross_total,
-                    'amount_received' => $amount_received,
-                    'status' => 'unpaid',
+                    // 'amount' => $sub_total,
+                    // 'discount' => $discount,
+                    // 'flat_discount' => $flat_discount,
+                    // 'gross_total' => $gross_total,
+                    // 'amount_received' => $amount_received,
                 );
                 $this->pharmacy_model->insertPayment($data);
                 $inserted_id = $this->db->insert_id();
@@ -212,38 +235,9 @@ class Pharmacy extends MX_Controller {
                     $this->db->where('id', $key);
                     $this->db->update('medicine', array('quantity' => $new_qty));
                 }
-                $this->session->set_flashdata('feedback', 'Added');
-                redirect("finance/pharmacy/invoice?id=" . "$inserted_id");
-            } else {
-                $data = array(
-                    'category_name' => $category_name,
-                    'patient' => $patient,
-                    'amount' => $sub_total,
-                    'discount' => $discount,
-                    'flat_discount' => $flat_discount,
-                    'gross_total' => $gross_total,
-                    'amount_received' => $amount_received,
-                );
-
-                $original_sale = $this->pharmacy_model->getPaymentById($id);
-                $original_sale_quantity = array();
-                $original_sale_quantity = explode(',', $original_sale->category_name);
-                $o_s_value[] = array();
-                foreach ($item_quantity_array as $key => $value) {
-                    $previous_qty = $this->db->get_where('medicine', array('id' => $key))->row()->quantity;
-                    foreach ($original_sale_quantity as $osq_key => $osq_value) {
-                        $o_s_value = explode('*', $osq_value);
-                        if ($o_s_value[0] == $key) {
-                            $previous_qty1 = $previous_qty + $o_s_value[2];
-                            $new_qty = $previous_qty1 - $value;
-                            $this->db->where('id', $key);
-                            $this->db->update('medicine', array('quantity' => $new_qty));
-                        }
-                    }
-                }
-                $this->pharmacy_model->updatePayment($id, $data);
+                $this->pharmacy_model->updatePayment($idPayment, $data);
                 $this->session->set_flashdata('feedback', 'Updated');
-                redirect("finance/pharmacy/invoice?id=" . "$id");
+                redirect("finance/invoice?id=" . "$idPayment");
             }
         }
     }

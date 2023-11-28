@@ -108,6 +108,7 @@ $lang['details'] = 'Detalles';
 $lang['bio_graph'] = 'Bio Gráfico';
 $lang['patient_id'] = 'Identificación del paciente';
 $lang['gender'] = 'Género';
+$lang['no_cedula'] = 'Cedula';
 
 
 
@@ -290,7 +291,7 @@ $lang['history'] = 'Historia';
 
 $lang['system_title'] = 'Doctor Care - Diagnostic Center / Doctors Chamber Management System';
 
-$lang['gross_total'] =  'Bruto total';
+$lang['gross_total'] =  'Total a pagar';
 $lang['amount_received'] =  'Cantidad recibida';
 $lang['gross_expense'] = 'Gasto bruto';
 $lang['total'] = 'Total';
@@ -320,7 +321,7 @@ $lang['date'] = 'Fecha';
 
 $lang['sub_total'] = 'Total parcial';
 
-$lang['discount'] = 'Descuento';
+$lang['discount'] = 'Varios';
 
 $lang['doctor_amount'] = 'Cantidad del Doctor';
 

@@ -26,6 +26,12 @@ class Pharmacy_model extends CI_model {
         return $query->row();
     }
 
+    function getPaymentUser($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('payment');
+        return $query->row();
+    }
+
     function getPaymentByKey($page_number, $key) {
         $data_range_1 = 50 * $page_number;
         $this->db->like('id', $key);
@@ -50,8 +56,9 @@ class Pharmacy_model extends CI_model {
 
     function updatePayment($id, $data) {
         $this->db->where('id', $id);
-        $this->db->update('pharmacy_payment', $data);
+        $this->db->update('payment', $data);
     }
+    
 
     function deletePayment($id) {
         $this->db->where('id', $id);

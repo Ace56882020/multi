@@ -23,8 +23,9 @@
                         <thead>
                             <tr>
                                 <th><?php echo lang('patient_id'); ?></th>                        
+                                <th><?php echo lang('no_cedula'); ?></th>
                                 <th><?php echo lang('name'); ?></th>
-                                <th><?php echo lang('phone'); ?></th>
+                                <th><?php echo lang('sex'); ?></th>
                                 <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Receptionist', 'Laboratorist'))) { ?>
                                     <th><?php echo lang('due_balance'); ?></th>
                                 <?php } ?>
@@ -75,7 +76,10 @@
                         <label for="exampleInputEmail1"><?php echo lang('name'); ?></label>
                         <input type="text" class="form-control" name="name" id="exampleInputEmail1" value='' placeholder="">
                     </div>
-
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1"><?php echo lang('no_cedula'); ?></label>
+                        <input type="text" class="form-control" name="no_cedula" id="exampleInputEmail1" value='' placeholder="">
+                    </div>
                     <div class="form-group col-md-4">
                         <label for="exampleInputEmail1"><?php echo lang('email'); ?></label>
                         <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='' placeholder="">

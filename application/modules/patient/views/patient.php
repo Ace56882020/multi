@@ -26,11 +26,9 @@
                         <thead>
                             <tr>
                                 <th><?php echo lang('patient_id'); ?></th>                        
+                                <th><?php echo lang('no_cedula'); ?></th>
                                 <th><?php echo lang('name'); ?></th>
-                                <th><?php echo lang('phone'); ?></th>
-                                <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Receptionist'))) { ?>
-                                    <th><?php echo lang('due_balance'); ?></th>
-                                <?php } ?>
+                                <th><?php echo lang('sex'); ?></th>
                                 <th class="no-print"><?php echo lang('options'); ?></th>
                             </tr>
                         </thead>
@@ -44,14 +42,6 @@
                                 border-radius: 100px;
                             }
                         </style>
-
-
-
-
-
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -62,10 +52,6 @@
 </section>
 <!--main content end-->
 <!--footer start-->
-
-
-
-
 
 
 <!-- Add Patient Modal-->
@@ -83,7 +69,10 @@
                         <label for="exampleInputEmail1"><?php echo lang('name'); ?></label>
                         <input type="text" class="form-control" name="name" id="exampleInputEmail1" value='' placeholder="">
                     </div>
-
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1"><?php echo lang('no_cedula'); ?></label>
+                        <input type="text" class="form-control" name="no_cedula" id="exampleInputEmail1" value='' placeholder="">
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1"><?php echo lang('email'); ?></label>
                         <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='' placeholder="">
@@ -93,7 +82,6 @@
                         <label for="exampleInputEmail1"><?php echo lang('password'); ?></label>
                         <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
                     </div>
-
 
 
                     <div class="form-group col-md-6">
@@ -136,7 +124,9 @@
                         <label><?php echo lang('birth_date'); ?></label>
                         <input class="form-control form-control-inline input-medium default-date-picker" type="text" name="birthdate" value="" placeholder="" readonly="">      
                     </div>
-
+                    <div class="form-group col-md-6">
+                       
+                    </div>
 
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1"><?php echo lang('blood_group'); ?></label>
@@ -165,26 +155,7 @@
 
 
 
-                    <div class="form-group last col-md-6">
-                        <label class="control-label">Image Upload</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="//www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                                </div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-white btn-file">
-                                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                        <input type="file" class="default" name="img_url"/>
-                                    </span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    
 
                     <!--
                                         <div class="form-group last col-md-6">
@@ -214,12 +185,6 @@
 </div>
 <!-- Add Patient Modal-->
 
-
-
-
-
-
-
 <!-- Edit Patient Modal-->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -235,7 +200,10 @@
                         <label for="exampleInputEmail1"><?php echo lang('name'); ?></label>
                         <input type="text" class="form-control" name="name" id="exampleInputEmail1" value='' placeholder="">
                     </div>
-
+                    <div class="form-group last col-md-6">
+                        <label class="control-label"><?php echo lang('no_cedula'); ?></label>
+                        <input type="text" class="form-control" name="no_cedula" id="exampleInputEmail1" value='' placeholder="">
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1"><?php echo lang('email'); ?></label>
                         <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='' placeholder="">
@@ -288,8 +256,8 @@
                         <label><?php echo lang('birth_date'); ?></label>
                         <input class="form-control form-control-inline input-medium default-date-picker" type="text" name="birthdate" value="" placeholder="" readonly="">      
                     </div>
-
-
+                    <div class="form-group col-md-6">
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1"><?php echo lang('blood_group'); ?></label>
                         <select class="form-control m-bot15" name="bloodgroup" value=''>
@@ -317,26 +285,7 @@
 
 
 
-                    <div class="form-group last col-md-6">
-                        <label class="control-label">Image Upload</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="//www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" id="img" alt="" />
-                                </div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-white btn-file">
-                                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                        <input type="file" class="default" name="img_url"/>
-                                    </span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                  
 
 
                     <!--
@@ -387,16 +336,6 @@
 <!-- Edit Patient Modal-->
 
 
-
-
-
-
-
-
-
-
-
-
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg"> 
         <div class="modal-content">
@@ -416,16 +355,18 @@
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                             </div>
                             <div class="col-md-12">
-                                <label for="exampleInputEmail1"><?php echo lang('patient_id'); ?>: <span class="patientIdClass"></span></label>
+                            <label for="exampleInputEmail1"><?php echo lang('no_cedula'); ?></label>
+                        <div class="cedulaClass"></div>
                             </div>
                         </div>
 
                     </div>
+
                     <div class="form-group col-md-4">
                         <label for="exampleInputEmail1"><?php echo lang('name'); ?></label>
                         <div class="nameClass"></div>
                     </div>
-
+                   
 
                     <div class="form-group col-md-4">
                         <label for="exampleInputEmail1"><?php echo lang('email'); ?></label>
@@ -475,21 +416,12 @@
                         <label for="exampleInputEmail1"><?php echo lang('doctor'); ?></label>
                         <div class="doctorClass"></div>
                     </div>
-
-
-
-
-
-
-
                 </form>
 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
 </div>
-
-
 
 <script src="common/js/codearistos.min.js"></script>
 
@@ -548,7 +480,7 @@
             $('#editPatientForm').find('[name="birthdate"]').val(response.patient.birthdate).end()
             $('#editPatientForm').find('[name="bloodgroup"]').val(response.patient.bloodgroup).end()
             $('#editPatientForm').find('[name="p_id"]').val(response.patient.patient_id).end()
-
+            $('#editPatientForm').find('[name="no_cedula"]').val(response.patient.no_cedula).end()
             if (typeof response.patient.img_url !== 'undefined' && response.patient.img_url != '') {
                 $("#img").attr("src", response.patient.img_url);
             }
@@ -584,6 +516,7 @@
         $('.patientidClass').html("").end()
         $('.doctorClass').html("").end()
         $('.ageClass').html("").end()
+        $('.cedulaClass').html("").end()
         $.ajax({
             url: 'patient/getPatientByJason?id=' + iid,
             method: 'GET', 
@@ -591,7 +524,7 @@
             dataType: 'json', 
         }).success(function (response) {
             // Populate the form fields with the data returned from server
-
+            console.log(response.patient)
             $('.patientIdClass').append(response.patient.id).end()
             $('.nameClass').append(response.patient.name).end()
             $('.emailClass').append(response.patient.email).end()
@@ -599,6 +532,7 @@
             $('.phoneClass').append(response.patient.phone).end()
             $('.genderClass').append(response.patient.sex).end()
             $('.birthdateClass').append(response.patient.birthdate).end()
+            $('.cedulaClass').append(response.patient.no_cedula).end()
             $('.ageClass').append(response.age).end()
             $('.bloodgroupClass').append(response.patient.bloodgroup).end()
             $('.patientidClass').append(response.patient.patient_id).end()

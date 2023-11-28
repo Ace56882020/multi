@@ -53,10 +53,11 @@
                                         <label class="control-label"><?php echo lang('patient'); ?> <?php echo lang('name'); ?> </label>
                                         <span style="text-transform: uppercase;"> : 
                                             <?php
-                                            if (!empty($patient_info)) {
-                                                echo $patient_info->name . ' <br>';
+                                            if (!empty($payment->patient_name)) {
+                                                echo $payment->patient_name;
                                             }
                                             ?>
+
                                         </span>
                                     </p>
                                 </div>
@@ -107,8 +108,8 @@
                                         <label class="control-label"><?php echo lang('invoice'); ?>  </label>
                                         <span style="text-transform: uppercase;"> : 
                                             <?php
-                                            if (!empty($payment->id)) {
-                                                echo $payment->id;
+                                            if (!empty($payment->factura)) {
+                                                echo $payment->factura;
                                             }
                                             ?>
                                         </span>
@@ -181,10 +182,15 @@
 
                         <tbody>
                             <?php
-                            if (!empty($payment->category_name)) {
+                            if (!empty($payment->category_name) || !empty($payment->category)) {
                                 $category_name = $payment->category_name;
                                 $category_name1 = explode(',', $category_name);
                                 $i = 0;
+                                $category = $payment->category;
+                                $category1 = explode(',', $category);
+                                if (empty($payment->x_ray)) {
+                                    $j = 1;
+                                }
                                 foreach ($category_name1 as $category_name2) {
                                     $i = $i + 1;
                                     $category_name3 = explode('*', $category_name2);
@@ -201,9 +207,28 @@
                                         <?php
                                     }
                                 }
+                                foreach ($category1 as $category2) {
+                                    $category3 = explode('*', $category2);
+                                    if ($category3[1] > 0) {
+                                        ?>                
+                                        <tr>
+                                            <td><?php echo $j = $j + $i; ?></td>
+                                            <td><?php
+                                                $current_medicine = $this->db->get_where('medicine', array('id' => $category3[0]))->row();
+                                                echo $current_medicine->name;
+                                                ?>
+                                            </td>
+                                         
+                                            <td class=""><?php echo $settings->currency; ?> <?php echo $category3[1]; ?> </td>
+                                            <td class=""> <?php echo $category3[2]; ?> </td>
+                                            <td class=""><?php echo $settings->currency; ?> <?php echo $category3[1] * $category3[2]; ?> </td>
+                                        </tr> 
+                                        <?php
+                                    }
+                                }
                             }
                             ?>
-
+                       
                         </tbody>
                     </table>
 

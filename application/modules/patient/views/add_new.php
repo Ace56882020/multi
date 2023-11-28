@@ -20,7 +20,7 @@
                                 <div class="panel-body">
                                     <div class="col-lg-12">
                                         <div class="col-lg-3"></div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <?php echo validation_errors(); ?>
                                         </div>
                                         <div class="col-lg-3"></div>
@@ -57,7 +57,17 @@
                                             }
                                             ?>' placeholder="">
                                         </div>
-
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1"><?php echo lang('no_cedula'); ?></label>
+                                            <input type="text" class="form-control" name="no_cedula" id="exampleInputEmail1" value='<?php
+                                            if (!empty($setval)) {
+                                                echo set_value('no_cedula');
+                                            }
+                                            if (!empty($patient->no_cedula)) {
+                                                echo $patient->no_cedula;
+                                            }
+                                            ?>' placeholder="">
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"><?php echo lang('email'); ?></label>
@@ -169,10 +179,6 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1"><?php echo lang('image'); ?></label>
-                                            <input type="file" name="img_url">
-                                        </div>
 
                                         <?php if (empty($id)) { ?>
 

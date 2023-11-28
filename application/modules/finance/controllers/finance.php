@@ -65,7 +65,7 @@ class Finance extends MX_Controller {
         $item_selected = array();
         $quantity = array();
         $category_selected = array();
-        // $amount_by_category = $this->input->post('category_amount');
+        $n_factura = $this->input->post('factura');
         $category_selected = $this->input->post('category_name');
         $item_selected = $this->input->post('category_id');
         $quantity = $this->input->post('quantity');
@@ -250,6 +250,7 @@ class Finance extends MX_Controller {
                 $patient_name = $patient_details->name;
                 $patient_phone = $patient_details->phone;
                 $patient_address = $patient_details->address;
+                $patient_no_cedula=$patient_details->no_cedula;
             } else {
                 $patient_name = 0;
                 $patient_phone = 0;
@@ -265,6 +266,8 @@ class Finance extends MX_Controller {
 
             if (empty($id)) {
                 $data = array(
+                    'factura'=>$n_factura,
+                    'no_cedula'=>$patient_no_cedula,
                     'category_name' => $category_name,
                     'patient' => $patient,
                     'date' => $date,
@@ -351,7 +354,7 @@ class Finance extends MX_Controller {
                     $this->finance_model->updatePayment($inserted_id, $data_payment);
 
                     $this->session->set_flashdata('feedback', 'Added');
-                    redirect("finance/invoice?id=" . "$inserted_id");
+                    redirect("finance/pharmacy/addPaymentView?id=". "$inserted_id");
                 }
             } else {
                 $deposit_edit_amount = $this->input->post('deposit_edit_amount');

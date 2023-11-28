@@ -41,6 +41,7 @@
                         </style>
 
                         <form role="form" class="clearfix pos form1"  id="editPaymentForm" action="finance/pharmacy/addPayment" method="post" enctype="multipart/form-data">
+                       
                             <div class="col-md-6 row">     
                                 <?php if (!empty($payment->id)) { ?>
                                     <div class="col-md-8 payment pad_bot">
@@ -52,6 +53,15 @@
                                         </div>                                              
                                     </div>                                           
                                 <?php } ?>
+                                <div class="col-md-9"> 
+                                <label for="exampleInputEmail1"> Paciente</label>
+                                        <input type="text" class="form-control pay_in" name="idPayment" id="idPayment" value='<?php
+                                        if (!empty($paymentUser->id)) {
+
+                                            echo $paymentUser->id;  
+                                        }
+                                        ?>' placeholder=" " disable>
+                                </div>
                                 <div class="col-md-8 payment">
                                     <div class="form-group last">
                                         <div class="col-md-6 payment_label row"> 
@@ -117,7 +127,7 @@
                                         }
                                         ?>' placeholder=" " disabled>
                                     </div>
-
+                                
                                 </div>
                                 <div class="col-md-12 payment right-six">
                                     <div class="col-md-3 payment_label"> 
