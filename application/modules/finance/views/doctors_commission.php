@@ -62,7 +62,7 @@
                     <table class="table table-striped table-hover table-bordered" id="editable-sample">
                         <thead>
                             <tr>
-                                <th><?php echo lang('doctor_id'); ?></th>
+                                <th><?php echo lang('factura'); ?></th>
                                 <th><?php echo lang('doctor'); ?></th>
                                 <th><?php echo lang('commission'); ?></th>
                                 <th><?php echo lang('total'); ?></th>
@@ -89,13 +89,24 @@
                         <?php foreach ($doctors as $doctor) { ?>
 
                             <tr class="">
-                                <td><?php echo $doctor->id; ?></td>
+                                <!-- <td><?php echo $doctor->id; ?></td> -->
+                                <td>
+                                    <?php
+                                    foreach ($payments as $payment) {
+                                        if ($payment->doctor == $doctor->id) {    
+                                                $factura =$payment->factura;     
+                                        }
+                                    }
+                                   echo $factura;
+                                    ?>
+                                </td>
                                 <td><?php echo $doctor->name; ?></td>
                                 <td><?php echo $settings->currency; ?>
                                     <?php
                                     foreach ($payments as $payment) {
                                         if ($payment->doctor == $doctor->id) {    
-                                                $doctor_amount[] = $payment->doctor_amount;            
+                                                $doctor_amount[] = $payment->doctor_amount;
+      
                                         }
                                     }
                                     if (!empty($doctor_amount)) {

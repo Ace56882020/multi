@@ -127,6 +127,7 @@ class Finance extends MX_Controller {
         $doctor = $this->input->post('doctor');
         $date = time();
         $date_string = date('d-m-y', $date);
+        print_r($date);
         $discount = $this->input->post('discount');
         if(empty($discount)){
             $discount = 0;
@@ -300,7 +301,6 @@ class Finance extends MX_Controller {
                         $card_number = $this->input->post('card_number');
                         $expire_date = $this->input->post('expire_date');
                         $cvv = $this->input->post('cvv');
-
                         $all_details = array(
                             'patient' => $patient,
                             'date' => $date,

@@ -42,6 +42,7 @@
                             </div>
                         <?php } ?>
                         <div class="col-lg-4 col-sm-4">
+                            
                             <h4> <?php echo lang('invoice_info'); ?> </h4>
                             <ul class="unstyled">
                                 <li> <?php echo lang('invoice_number'); ?> 		: <strong>00<?php echo $payment->id; ?></strong></li>

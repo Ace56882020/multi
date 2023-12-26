@@ -243,7 +243,6 @@
                                                     <label for="exampleInputEmail1"> <?php echo lang('select'); ?></label>
                                                     <select name="category_name[]" id="" class="multi-select" multiple="" id="my_multi_select3" >
                                                         <?php foreach ($categories as $category) { ?>
-                                                            console.log(categories);
                                                             <option class="ooppttiioonn" data-id="<?php echo $category->c_price; ?>" data-idd="<?php echo $category->id; ?>" data-cat_name="<?php echo $category->category; ?>" value="<?php echo $category->category; ?>" 
 
                                                                     <?php
@@ -314,7 +313,7 @@
                                             </div>
 
 
-                                            <div class="col-md-12 payment right-six">
+                                            <div class="col-md-12 payment right-six" style='display:none'>
                                                 <div class="payment_label"> 
                                                     <label for="exampleInputEmail1"><?php echo lang('discount'); ?>  <?php
                                                         if ($discount_type == 'percentage') {
@@ -349,7 +348,7 @@
                                             </div>
 
 
-                                            <div class="col-md-12 payment right-six">
+                                            <div class="col-md-12 payment right-six" style='display:none'>
                                                 <div class="payment_label"> 
                                                     <label for="exampleInputEmail1"><?php echo lang('note'); ?> </label>
                                                 </div>
@@ -364,7 +363,7 @@
 
                                             </div>  
 
-                                            <div class="col-md-12 payment right-six">
+                                            <div class="col-md-12 payment right-six" style='display:none'>
 
                                                 <div class="payment_label"> 
                                                     <label for="exampleInputEmail1"><?php

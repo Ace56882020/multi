@@ -604,6 +604,7 @@ $lang['sms_settings'] = 'Ajustes SMS';
 
 
 $lang['doctor_id'] = 'Doctor Id';
+$lang['factura'] = '# Factura Doctor';
 
 $lang['diagnostic_test'] = 'Prueba de diagnóstico';
 

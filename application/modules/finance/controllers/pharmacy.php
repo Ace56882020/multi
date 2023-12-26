@@ -221,7 +221,7 @@ class Pharmacy extends MX_Controller {
                 $data = array(
                     'category' => $category_name,
                     'patient' => $patient,
-                    // 'amount' => $sub_total,
+                    'vat' => $sub_total,
                     // 'discount' => $discount,
                     // 'flat_discount' => $flat_discount,
                     // 'gross_total' => $gross_total,

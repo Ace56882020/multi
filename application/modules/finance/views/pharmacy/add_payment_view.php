@@ -53,7 +53,7 @@
                                         </div>                                              
                                     </div>                                           
                                 <?php } ?>
-                                <div class="col-md-9"> 
+                                <div class="col-md-9" style="display:none"> 
                                 <label for="exampleInputEmail1"> Paciente</label>
                                         <input type="text" class="form-control pay_in" name="idPayment" id="idPayment" value='<?php
                                         if (!empty($paymentUser->id)) {
@@ -129,7 +129,7 @@
                                     </div>
                                 
                                 </div>
-                                <div class="col-md-12 payment right-six">
+                                <div class="col-md-12 payment right-six" style='display:none'>
                                     <div class="col-md-3 payment_label"> 
                                         <label for="exampleInputEmail1"> <?php echo lang('discount'); ?><?php
                                             if ($discount_type == 'percentage') {

@@ -13,7 +13,7 @@ class Doctor extends MX_Controller {
         $this->load->model('prescription/prescription_model');
         $this->load->model('schedule/schedule_model');
         $this->load->module('patient');
-        if (!$this->ion_auth->in_group(array('admin', 'Accountant', 'Doctor'))) {
+        if (!$this->ion_auth->in_group(array('admin', 'Accountant', 'Doctor','Nurse'))) {
             redirect('home/permission');
         }
     }

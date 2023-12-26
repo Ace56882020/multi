@@ -18,6 +18,7 @@ class Medicine extends MX_Controller {
         if (empty($page_number)) {
             $page_number = 0;
         }
+
        // $data['medicines'] = $this->medicine_model->getMedicineByPageNumber($page_number);
         $data['medicines'] = $this->medicine_model->getMedicine();
         $data['categories'] = $this->medicine_model->getMedicineCategory();
@@ -41,6 +42,7 @@ class Medicine extends MX_Controller {
         $data['settings'] = $this->settings_model->getSettings();
         $this->load->view('home/dashboard', $data); // just the header file
         $this->load->view('medicine', $data);
+        $this->load->view('medicine_phrarmacy', $data);
         $this->load->view('home/footer'); // just the header file
     }
 
@@ -91,6 +93,7 @@ class Medicine extends MX_Controller {
         $data['key'] = $key;
         $this->load->view('home/dashboard', $data); // just the header file
         $this->load->view('medicine', $data);
+        $this->load->view('medicine_phrarmacy', $data);
         $this->load->view('home/footer'); // just the header file
     }
 

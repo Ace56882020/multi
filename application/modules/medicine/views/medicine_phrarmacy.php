@@ -4,9 +4,8 @@
     <section class="wrapper site-min-height">
         <!-- page start-->
         <section class="">
-
             <header class="panel-heading">
-                <?php echo lang('medicine'); ?> 
+                <?php echo lang('medicine_phrarmacy'); ?> 
                 <div class="col-md-4 no-print pull-right"> 
                     <a data-toggle="modal" href="#myModal">
                         <div class="btn-group pull-right">
@@ -66,9 +65,7 @@
                                 <th> <?php echo lang('company'); ?></th>
                                 <th> <?php echo lang('effects'); ?></th>
                                 <th> <?php echo lang('expiry_date'); ?></th>
-                                <?php if(($this->ion_auth->user()->row()->username)==='admin') {?>
-                                <th> <?php echo lang('options'); ?></th>
-                                <?php } ?>
+                                <!-- <th> <?php echo lang('options'); ?></th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -118,12 +115,10 @@
                                 <td><?php echo $medicine->company; ?></td>
                                 <td><?php echo $medicine->effects; ?></td>
                                 <td> <?php echo $medicine->e_date; ?></td>
-                                <?php if(($this->ion_auth->user()->row()->username)==='admin') {?>
-                                <td>
+                                <!-- <td>
                                     <button type="button" class="btn btn-info btn-xs btn_width editbutton" data-toggle="modal" data-id="<?php echo $medicine->id; ?>"><i class="fa fa-edit"></i>  <?php echo lang('edit'); ?></button>   
                                     <a class="btn btn-info btn-xs btn_width delete_button" href="medicine/delete?id=<?php echo $medicine->id; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash-o"> </i> <?php echo lang('delete'); ?></a>
-                                </td>
-                                <?php } ?>
+                                </td> -->
                             </tr>
                         <?php } ?>
                         </tbody>

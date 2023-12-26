@@ -243,37 +243,9 @@
                     </div>
 
                     <div class="">
-                        <div class="col-lg-4 invoice-block pull-right">
-                            <ul class="unstyled amounts">
-                                <li><strong><?php echo lang('sub_total'); ?> : </strong><?php echo $settings->currency; ?> <?php echo $payment->amount; ?></li>
-                                <?php if (!empty($payment->discount)) { ?>
-                                    <li><strong><?php echo lang('discount'); ?></strong> <?php
-                                        if ($discount_type == 'percentage') {
-                                            echo '(%) : ';
-                                        } else {
-                                            echo ': ' . $settings->currency;
-                                        }
-                                        ?> <?php
-                                        $discount = explode('*', $payment->discount);
-                                        if (!empty($discount[1])) {
-                                            echo $discount[0] . ' %  =  ' . $settings->currency . ' ' . $discount[1];
-                                        } else {
-                                            echo $discount[0];
-                                        }
-                                        ?></li>
-                                    <?php } ?>
-                                    <?php if (!empty($payment->vat)) { ?>
-                                    <li><strong>VAT :</strong>   <?php
-                                        if (!empty($payment->vat)) {
-                                            echo $payment->vat;
-                                        } else {
-                                            echo '0';
-                                        }
-                                        ?> % = <?php echo $settings->currency . ' ' . $payment->flat_vat; ?></li>
-                                <?php } ?>
-                                <li><strong><?php echo lang('grand_total'); ?> : </strong><?php echo $settings->currency; ?> <?php echo $g = $payment->gross_total; ?></li>
-                                <li><strong><?php echo lang('amount_received'); ?> : </strong><?php echo $settings->currency; ?> <?php echo $r = $this->finance_model->getDepositAmountByPaymentId($payment->id); ?></li>
-                                <li><strong><?php echo lang('amount_to_be_paid'); ?> : </strong><?php echo $settings->currency; ?> <?php echo $g - $r; ?></li>
+                        <div class="col-lg-6 invoice-block pull-right">
+                            <ul class="unstyled amounts" styler>
+                                <li><strong><?php echo lang('amount_to_be_paid'); ?> : </strong><?php echo $settings->currency; ?> <?php echo $g = $payment->gross_total + $payment->vat; ?></li>
                             </ul>
                         </div>
                     </div>

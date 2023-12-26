@@ -136,7 +136,7 @@
                         <?php } ?>
                         <!-- payment notification end -->  
                         <!-- patient notification start-->
-                        <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Doctor', 'Nurse', 'Laboratorist'))) { ?> 
+                        <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Doctor', 'Pharmacist', 'Laboratorist'))) { ?> 
                             <li id="header_notification_bar" class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <i class="fa fa-user"></i>
@@ -270,7 +270,7 @@
                                 <span><?php echo lang('dashboard'); ?></span>
                             </a>
                         </li>
-                        <?php if ($this->ion_auth->in_group(array('admin'))) { ?>
+                        <?php if ($this->ion_auth->in_group(array('admin','Pharmacist'))) { ?>
                             <li> <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa fa-users"></i>
@@ -282,7 +282,7 @@
                                 </ul>
                             </li>
                         <?php } ?>
-                        <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Nurse', 'Doctor', 'Laboratorist', 'Receptionist'))) { ?>
+                        <?php if ($this->ion_auth->in_group(array('admin', 'Accountant', 'Pharmacist', 'Doctor', 'Laboratorist', 'Receptionist'))) { ?>
 
                             <li> <li class="sub-menu">
                                 <a href="javascript:;" >
@@ -303,7 +303,7 @@
                         <?php } ?>
 
 
-                        <?php if ($this->ion_auth->in_group(array('admin', 'Nurse', 'Receptionist'))) { ?>
+                        <?php if ($this->ion_auth->in_group(array('admin', 'Pharmacist', 'Receptionist'))) { ?>
                             <li> <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa fa-stethoscope"></i> 
@@ -331,7 +331,7 @@
                             </li>
                         <?php } ?>
 
-                        <?php if ($this->ion_auth->in_group(array('admin', 'Doctor', 'Nurse', 'Receptionist'))) { ?>
+                        <?php if ($this->ion_auth->in_group(array('admin', 'Doctor', 'Pharmacist', 'Receptionist'))) { ?>
                             <li> <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa fa-stethoscope"></i> 
@@ -362,7 +362,7 @@
                                 </ul>
                             </li>
                         <?php } ?>
-                        <?php if ($this->ion_auth->in_group('admin')) { ?>
+                        <?php if ($this->ion_auth->in_group(array('admin','Pharmacist'))) { ?>
                             <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa fa-dollar"></i>
@@ -484,7 +484,7 @@
 
 
 
-                            <?php if ($this->ion_auth->in_group(array('admin'))) { ?>
+                            <?php if ($this->ion_auth->in_group(array('admin','Pharmacist'))) { ?>
                                 <li class="sub-menu">
                                     <a href="javascript:;" >
                                         <i class="fa  fa-medkit"></i>
@@ -502,7 +502,7 @@
                             <?php } ?>
 
 
-                            <li class="sub-menu">
+                            <!-- <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa fa-dollar"></i>
                                     <span><?php echo lang('pharmacy'); ?></span>
@@ -517,15 +517,8 @@
                                     <li><a  href="finance/pharmacy/addExpenseView"><i class="fa fa-plus-circle"></i><?php echo lang('add_expense'); ?></a></li>
                                     <li><a  href="finance/pharmacy/expenseCategory"><i class="fa fa-edit"></i><?php echo lang('expense_categories'); ?> </a></li>
                                     <li><a  href="finance/pharmacy/financialReport"><i class="fa fa-book"></i><?php echo lang('pharmacy'); ?> <?php echo lang('report'); ?> </a></li>
-
-
-
-
-
-
-
                                 </ul>
-                            </li> 
+                            </li>  -->
                         <?php } ?>
 
 
@@ -685,13 +678,13 @@
                                     <span> <?php echo lang('medicine_list'); ?> </span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="medicine/addMedicineView" >
                                     <i class="fa fa-plus-circle"></i>
                                     <span> <?php echo lang('add_medicine'); ?> </span>
                                 </a>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a href="medicine/medicineCategory" >
                                     <i class="fa fa-medkit"></i>
                                     <span> <?php echo lang('medicine_category'); ?> </span>
@@ -702,7 +695,7 @@
                                     <i class="fa fa-plus-circle"></i>
                                     <span> <?php echo lang('add_medicine_category'); ?> </span>
                                 </a>
-                            </li>
+                            </li> -->
                         <?php } ?>
 
 
